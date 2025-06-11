@@ -1,0 +1,67 @@
+// src/features/Prestige/Prestige.module.scss
+.prestigePanel {
+  padding: 20px;
+  background-color: #f0e68c; // Золотистый фон для престижа
+  border: 2px solid #daa520; // Золотистая рамка
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px; // Отступ от других панелей
+
+  h3 {
+    color: #8b4513; // Коричневый
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin: 8px 0;
+    color: #5a340d;
+  }
+}
+
+.duiktcoinCount {
+  font-weight: bold;
+  color: #cd853f; // Перу
+}
+
+.prestigeBonus {
+  font-weight: bold;
+  color: #228b22; // Лесной зеленый
+}
+
+.gainInfo {
+  font-style: italic;
+  color: #483d8b; // Темно-слабо-синий
+}
+
+.requirementInfo {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.prestigeButton {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  background-color: #ff8c00; // Темно-оранжевый
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 15px;
+
+  &:hover {
+    background-color: #cc7000;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background-color: #d3d3d3; // Светло-серый
+    color: #888;
+    cursor: not-allowed;
+  }
+}

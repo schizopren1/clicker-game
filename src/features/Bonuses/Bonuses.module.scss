@@ -1,0 +1,65 @@
+// src/features/Bonuses/Bonuses.module.scss
+.bonusManager {
+  position: fixed; // Или absolute относительно родителя
+  bottom: 20px;
+  right: 20px; // Позиция для кнопки бонуса
+  z-index: 100;
+}
+
+.bonusButton {
+  padding: 15px 25px;
+  font-size: 1.2em;
+  background-color: #f1c40f; // Желтый для бонуса
+  color: #2c3e50;
+  border: none;
+  border-radius: 50px; // Круглая или овальная
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: #f39c12;
+  }
+}
+
+.bonusNameHint {
+    font-size: 0.7em;
+    opacity: 0.8;
+    position: absolute;
+    bottom: -18px; // Под кнопкой
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.activeBonusesList {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  h4 {
+    margin-top: 0;
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    font-size: 0.9em;
+    padding: 5px 0;
+    border-bottom: 1px dashed #eee;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

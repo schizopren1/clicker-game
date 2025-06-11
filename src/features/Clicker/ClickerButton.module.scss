@@ -1,0 +1,29 @@
+.clickerButton {
+  width: 350px; // Збільшимо розмір
+  height: 350px;
+  border: none;
+  background-color: transparent; // Прозорий фон
+  background-image: url('/images/mcd-logo.png'); // Шлях до вашого логотипу
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  
+  display: flex;
+  align-items: flex-end; // Розміщуємо текст знизу
+  justify-content: center;
+  padding-bottom: 20px;
+  
+  transition: transform 0.1s ease-out;
+
+  &:active {
+    transform: scale(0.95); // Ефект натискання
+  }
+}
+
+.clickerText {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-color);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

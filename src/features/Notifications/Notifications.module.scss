@@ -1,0 +1,77 @@
+// src/features/Notifications/Notifications.module.scss
+.toastContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050; // Выше большинства элементов, но ниже полноэкранных модалок, если они есть
+  display: flex;
+  flex-direction: column-reverse; // Новые уведомления появляются сверху старых в этой позиции
+  gap: 10px;
+  max-width: 350px; // Ограничение ширины
+}
+
+.toastNotification {
+  background-color: var(--card-bg-color, #fff);
+  color: var(--text-color, #333);
+  padding: 12px 18px;
+  border-radius: var(--border-radius-medium, 8px);
+  box-shadow: var(--shadow-lg, 0 4px 15px rgba(0, 0, 0, 0.15));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer; // Намек на то, что можно кликнуть для закрытия
+  border-left: 5px solid var(--primary-color, #3498db); // Полоска сбоку
+
+  &.info {
+    border-left-color: var(--primary-color, #3498db);
+  }
+  &.success {
+    border-left-color: var(--secondary-color, #2ecc71);
+    .toastIcon { color: var(--secondary-color, #2ecc71); }
+  }
+  &.warning {
+    border-left-color: var(--accent-color, #f39c12);
+    .toastIcon { color: var(--accent-color, #f39c12); }
+  }
+  &.error {
+    border-left-color: #e74c3c; // Пример цвета для ошибок
+    .toastIcon { color: #e74c3c; }
+  }
+}
+
+.toastIcon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+.toastContent {
+  flex-grow: 1;
+}
+
+.toastTitle {
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.toastMessage {
+  margin: 0;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.toastCloseButton {
+  background: none;
+  border: none;
+  color: var(--text-color-muted, #7f8c8d);
+  font-size: 1.5em;
+  line-height: 1;
+  padding: 0 5px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}

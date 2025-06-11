@@ -1,0 +1,135 @@
+// src/features/Skins/Skins.module.scss
+@use 'sass:color';
+
+.skinsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.skinItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+
+  // 👇 ОСНОВНЕ ВИПРАВЛЕННЯ: ЗАВЖДИ ТЕМНИЙ ФОН І СВІТЛИЙ ТЕКСТ 👇
+  background: rgba(23, 23, 43, 0.7); // Напівпрозорий темний фон
+  border: 1px solid rgba(255, 255, 255, 0.1); // Світла рамка
+  color: #e0e0e0; // Світлий текст за замовчуванням
+  
+  &.locked {
+    opacity: 0.6;
+    filter: grayscale(50%);
+  }
+  
+  &:not(.locked):hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.2);
+  }
+
+  &.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.3);
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.skinPreview {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.skinInfo {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.skinName {
+  margin: 0 0 5px 0;
+  color: #ffffff; // Завжди білий для заголовків
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.skinDescription {
+  font-size: 0.9rem;
+  color: #a0a0b0; // Завжди світло-сірий для описів
+  margin: 0;
+}
+
+.unlockCondition {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  color: var(--secondary-color); // Цей колір буде змінюватися разом з темою
+  font-weight: bold;
+}
+
+.skinActions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.actionButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 110px;
+  text-align: center;
+  
+  &:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+}
+
+.unlockButton {
+  background-color: var(--secondary-color);
+  color: #fff;
+  
+  &:hover:not(:disabled) {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+}
+
+.selectButton {
+  background-color: var(--primary-color);
+  color: var(--text-color-on-primary);
+  
+  &:hover:not(:disabled) {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    background-color: transparent !important;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color) !important;
+    cursor: default;
+    filter: none;
+    opacity: 1;
+  }
+}

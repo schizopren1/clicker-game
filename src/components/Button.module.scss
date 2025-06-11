@@ -1,0 +1,72 @@
+// --- Глобальные переменные (могут быть в :root или в родительском компоненте) ---
+// :root {
+//   --primary-color: #007bff; // Пример
+//   --secondary-color: #0056b3; // Пример для hover на primary
+//   --text-on-primary: white;
+//   --disabled-bg-color: #cccccc;
+//   --disabled-text-color: #666666; // или rgba(0,0,0,0.5)
+//   --button-border-radius: 8px;
+//   --button-padding: 0.8em 1.5em;
+//   --button-font-size: 1em;
+//   --button-font-weight: bold;
+//   --button-border-width: 2px;
+//   --transition-duration: 0.3s;
+// }
+
+.customButton {
+  // Используем переменные для базовых стилей
+  padding: var(--button-padding, 0.8em 1.5em);
+  font-size: var(--button-font-size, 1em);
+  font-weight: var(--button-font-weight, bold);
+  border-radius: var(--button-border-radius, 8px);
+  cursor: pointer;
+  transition: background-color var(--transition-duration, 0.3s),
+              color var(--transition-duration, 0.3s),
+              border-color var(--transition-duration, 0.3s),
+              opacity var(--transition-duration, 0.3s);
+  border: var(--button-border-width, 2px) solid transparent;
+  text-align: center; // Часто полезно для кнопок
+  text-decoration: none; // Для случаев, если кнопка это <a> тег
+  appearance: none; // Убирает нативные стили для <button>
+
+  // Переменные для конкретной кнопки, которые будут установлены вариантами
+  // Можно задать дефолтные значения, если кнопка может быть без класса .primary/.secondary
+  background-color: var(--btn-bg, transparent);
+  color: var(--btn-text, var(--primary-color, #007bff)); // Дефолт к primary, если нет --btn-text
+  border-color: var(--btn-border, transparent);
+
+  &:hover:not(:disabled) {
+    background-color: var(--btn-bg-hover, var(--btn-bg));
+    color: var(--btn-text-hover, var(--btn-text));
+    border-color: var(--btn-border-hover, var(--btn-border));
+  }
+
+  &.primary {
+    --btn-bg: var(--primary-color, #007bff);
+    --btn-text: var(--text-on-primary, white);
+    --btn-border: var(--primary-color, #007bff); // Для консистентности, если вдруг понадобится
+
+    --btn-bg-hover: var(--secondary-color, #0056b3); // secondary-color здесь как hover для primary
+    --btn-text-hover: var(--text-on-primary, white);
+    --btn-border-hover: var(--secondary-color, #0056b3);
+  }
+
+  &.secondary {
+    --btn-bg: transparent;
+    --btn-text: var(--primary-color, #007bff);
+    --btn-border: var(--primary-color, #007bff);
+
+    --btn-bg-hover: var(--primary-color, #007bff);
+    --btn-text-hover: var(--text-on-primary, white);
+    --btn-border-hover: var(--primary-color, #007bff);
+  }
+  
+  &:disabled {
+    // Использование !important здесь оправдано, чтобы перекрыть любые стили вариантов
+    background-color: var(--disabled-bg-color, #cccccc) !important;
+    border-color: var(--disabled-bg-color, #cccccc) !important; // Часто фон и бордер одинаковы
+    color: var(--disabled-text-color, #666666) !important; 
+    cursor: not-allowed;
+    opacity: 0.6; // Или var(--disabled-opacity, 0.6)
+  }
+}

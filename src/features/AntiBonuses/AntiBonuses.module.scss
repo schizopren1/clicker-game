@@ -1,0 +1,39 @@
+// src/features/AntiBonuses/AntiBonuses.module.scss
+.antiBonusContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1001; // Над модальним вікном, якщо треба
+  max-width: 300px;
+}
+
+.antiBonusItem {
+  padding: 1rem;
+  border-radius: 6px;
+  color: white; // За замовчуванням для темних фонів
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0.3em;
+  }
+  p {
+    margin-bottom: 0.2em;
+    font-size: 0.9em;
+  }
+
+  // Специфічні стилі для типів антибонусів
+  &.disable_click {
+    background-color: var(--error-color);
+  }
+  &.reduce_passive_income {
+    background-color: var(--warning-color);
+    color: #333; // Темний текст на жовтому
+  }
+  &.lose_credits_percentage { // Стиль для миттєвого повідомлення
+    background-color: darken;
+  }
+}

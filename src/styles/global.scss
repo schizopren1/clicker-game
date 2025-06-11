@@ -1,0 +1,148 @@
+// src/styles/global.scss
+@use 'sass:color';
+
+@keyframes moveBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color, #e0e0e0);
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--background-color, #1a1a2e), #2d2d5a, var(--background-color, #1a1a2e));
+  background-size: 200% 200%;
+  animation: moveBackground 25s ease-in-out infinite;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px;
+}
+
+.game-layout {
+  display: flex;
+  gap: 20px;
+  flex-grow: 1;
+  min-height: 0;
+  transition: all 0.4s ease-in-out;
+
+  &.panel-view-active {
+    .left-column {
+      flex: 0;
+      width: 0;
+      padding: 0;
+      margin: 0;
+      opacity: 0;
+      border: none;
+      overflow: hidden;
+    }
+    .right-column {
+      flex: 1;
+    }
+  }
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: var(--panel-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  backdrop-filter: blur(var(--backdrop-filter-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-filter-blur));
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.4s ease-in-out;
+}
+
+.left-column {
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.right-column {
+  flex: 1.2;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-header {
+  text-align: center;
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color), 0 0 5px white;
+    margin-bottom: 20px;
+  }
+}
+
+.stats-display {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.1rem;
+  p { color: var(--text-color-muted); span { color: var(--text-color-light); font-weight: 600; } }
+  .credits-stat {
+    font-size: 1.5rem; color: var(--text-color-light);
+    span { color: var(--primary-color); font-weight: 700; letter-spacing: 1px; }
+  }
+}
+
+.panel-toggle-nav {
+  display: flex;
+  margin-bottom: 20px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 5px;
+
+  button {
+    flex: 1; padding: 10px 15px; background: transparent; border: none;
+    color: var(--text-color-muted); font-size: 0.9rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; border-radius: 8px;
+    &.active-toggle {
+      color: var(--text-color-on-primary, #1a1a2e); background-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(var(--primary-color-rgb, 0, 242, 254), 0.5);
+    }
+    &:hover:not(.active-toggle) { background-color: rgba(255, 255, 255, 0.1); }
+  }
+}
+
+.panel-content {
+  overflow-y: auto; height: 100%; padding-right: 10px; position: relative;
+  &::-webkit-scrollbar { width: 6px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: 6px; }
+}
+
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);
+}
+
+.panel-title { font-size: 1.5rem; color: var(--text-color-light); margin: 0; }
+
+.back-button {
+  background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color);
+  color: var(--text-color-muted); padding: 8px 16px; border-radius: 8px;
+  cursor: pointer; font-weight: 600; transition: all 0.2s ease;
+  &:hover { background: rgba(255, 255, 255, 0.2); color: var(--text-color-light); border-color: var(--primary-color); }
+}
+
+.loading-screen {
+  display: flex; align-items: center; justify-content: center; height: 100vh;
+  font-size: 2rem; color: var(--primary-color, #00f2fe); background-color: var(--background-color, #1a1a2e);
+}

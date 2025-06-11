@@ -1,0 +1,76 @@
+.upgradeItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: var(--card-bg-color);
+  border: 1px solid transparent; // Прозора рамка спочатку
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  
+  &.unaffordable {
+    opacity: 0.5;
+    filter: grayscale(80%);
+  }
+  
+  &:not(.maxLevel):not(.unaffordable):hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.2);
+  }
+}
+
+.upgradeIcon {
+  font-size: 2rem;
+}
+
+.upgradeInfo {
+  flex-grow: 1;
+}
+
+.upgradeName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+}
+
+.upgradeDescription {
+  font-size: 0.9rem;
+  color: var(--text-color-muted);
+}
+
+.upgradeCost {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.upgradeMaxed {
+  font-weight: 700;
+  color: var(--secondary-color);
+  text-shadow: 0 0 5px var(--secondary-color);
+}
+
+.purchaseButton {
+  padding: 10px 20px;
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text-color);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+
+  &:hover:not(:disabled) {
+    background: var(--button-primary-hover-bg);
+    box-shadow: 0 0 10px var(--primary-color);
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    background: var(--button-disabled-bg);
+    color: var(--button-disabled-text-color);
+    cursor: not-allowed;
+  }
+}
